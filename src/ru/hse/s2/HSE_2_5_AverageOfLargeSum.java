@@ -1,5 +1,7 @@
 package ru.hse.s2;
 
+import java.math.BigInteger;
+
 public class HSE_2_5_AverageOfLargeSum {
     public static void main(String[] args) {
         long[] last10000longs = new long[9999];
@@ -15,10 +17,10 @@ public class HSE_2_5_AverageOfLargeSum {
     }
 
     private static long getAvg(long[] array) {
-        double avg = 0;
+        BigInteger sum = BigInteger.ZERO;
         for (long value : array) {
-            avg += value * 1.0d / array.length;
+            sum = sum.add(BigInteger.valueOf(value));
         }
-        return (long) avg;
+        return sum.divide(BigInteger.valueOf(array.length)).longValue();
     }
 }

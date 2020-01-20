@@ -12,6 +12,6 @@ public class HSE_2_1_PassParams {
     }
 
     static class Counter {
-        final int value;
+        int value;
     }
 }

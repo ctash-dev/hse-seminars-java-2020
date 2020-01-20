@@ -7,5 +7,6 @@ public class HSE_2_3_AverageDoubles {
                 Double.MIN_VALUE + 1
         };
         System.out.println((numbers[0] + numbers[1]) / 2);
+        if (0.0 != (numbers[0] + numbers[1]) / 2) throw new AssertionError();
     }
 }

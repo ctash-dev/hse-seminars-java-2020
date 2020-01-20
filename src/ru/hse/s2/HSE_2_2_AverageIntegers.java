@@ -8,6 +8,6 @@ public class HSE_2_2_AverageIntegers {
                 Integer.MAX_VALUE - 2,
         };
         System.out.println(Integer.MAX_VALUE - 1);
-        System.out.println((numbers[0]/3 + numbers[1]/3 + numbers[2]/3));
+        System.out.println((numbers[0]*1.0/3 + numbers[1]*1.0/3 + numbers[2]*1.0/3));
     }
 }

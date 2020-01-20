@@ -15,10 +15,10 @@ public class HSE_2_5_AverageOfLargeSum {
     }
 
     private static long getAvg(long[] array) {
-        long sum = 0;
+        double avg = 0;
         for (long value : array) {
-            sum += value;
+            avg += value * 1.0d / array.length;
         }
-        return sum / array.length;
+        return (long) avg;
     }
 }

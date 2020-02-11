@@ -15,4 +15,8 @@ public class HSE_4_1_Strings {
         System.out.println(chars[0]);
     }
 
+    public static class MutableString extends String {
+        //expose inner fields
+    }
+
 }

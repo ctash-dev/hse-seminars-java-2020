@@ -3,27 +3,41 @@ package ru.hse.s4;
 public class HSE_4_1_Strings {
 
     public static void main(String[] args) {
-        String firstS = "string";
-        String secondS = firstS.toUpperCase();
-        System.out.println(firstS.charAt(0));
-        System.out.println(secondS.charAt(0));
+        var value = "stringValue";
+        var upperCase = value.toUpperCase();
 
-        char[] chars = firstS.toCharArray();
-        chars[0] = 'S';
 
-        System.out.println(firstS.charAt(0));
-        System.out.println(chars[0]);
+        var myValue = new MyString(value);
+        var myOtherValue = new MyString(value);
+        System.out.println(myValue.equals(myOtherValue));
 
-        var doubleS = firstS + firstS;
-        System.out.println(doubleS);
+        System.out.println(myValue.toString().equals(value));
+        System.out.println(myOtherValue.toString().equals(value));
 
-        var concatenation = new StringBuilder();
-        //how many ops?
-        for (int i = 0; i < 100; i++) {
-            concatenation.append(firstS);
-        }
-        System.out.println(concatenation);
+        System.out.println(myValue.toUpperCase().equals(myOtherValue.toUpperCase()));
+        System.out.println(myValue
+                .toUpperCase().toString().equals(upperCase));
     }
 
+    public static final class MyString {
+        private final char[] chars;
+
+        public MyString(String string) {
+            this.chars = string.toCharArray();
+        }
+
+        public MyString toUpperCase() {
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            //todo
+        }
+
+        @Override
+        public String toString() {
+            //todo
+        }
+    }
 
 }

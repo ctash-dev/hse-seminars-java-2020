@@ -13,10 +13,10 @@ public class HSE_4_1_Strings {
 
         System.out.println(firstS.charAt(0));
         System.out.println(chars[0]);
+
+        var doubleS = firstS + firstS;
+        System.out.println(doubleS);
     }
 
-    public static class MutableString extends String {
-        //expose inner fields
-    }
 
 }

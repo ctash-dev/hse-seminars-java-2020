@@ -17,12 +17,12 @@ public class HSE_4_1_Strings {
         var doubleS = firstS + firstS;
         System.out.println(doubleS);
 
-        var concatenation = "";
+        var concatenation = new StringBuilder();
         //how many ops?
         for (int i = 0; i < 100; i++) {
-            concatenation += firstS;
+            concatenation.append(firstS);
         }
-
+        System.out.println(concatenation);
     }
 
 

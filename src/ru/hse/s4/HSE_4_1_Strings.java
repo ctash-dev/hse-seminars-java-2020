@@ -16,6 +16,13 @@ public class HSE_4_1_Strings {
 
         var doubleS = firstS + firstS;
         System.out.println(doubleS);
+
+        var concatenation = "";
+        //how many ops?
+        for (int i = 0; i < 100; i++) {
+            concatenation += firstS;
+        }
+
     }
 
 

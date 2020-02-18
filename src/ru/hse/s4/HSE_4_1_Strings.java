@@ -27,16 +27,17 @@ public class HSE_4_1_Strings {
         }
 
         public MyString toUpperCase() {
+            return new MyString("test");
         }
 
         @Override
         public boolean equals(Object obj) {
-            //todo
+            return false;
         }
 
         @Override
         public String toString() {
-            //todo
+            return "";
         }
     }
 

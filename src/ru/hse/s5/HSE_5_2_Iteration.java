@@ -23,7 +23,9 @@ public class HSE_5_2_Iteration {
         System.out.println(list); // should be empty
 
         Map<Integer, Integer> map = new HashMap<>();
-        Iterable<Integer> iterableFromMap; // ???
+        Iterable<Integer> iterableFromMapKeys = map.keySet();
+        Iterable<Integer> iterableFromMapValues = map.values();
+        Iterable<Map.Entry<Integer, Integer>> iterableFromMapEntries = map.entrySet();
 
     }
 

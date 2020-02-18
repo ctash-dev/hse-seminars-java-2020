@@ -3,7 +3,6 @@ package ru.hse.s5;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
 
 public class HSE_5_5_ListToMap {
 
@@ -24,7 +23,11 @@ public class HSE_5_5_ListToMap {
 
 
     public static Map<Point, Integer> listToMap(List<Point> points) {
-        return Map.of();
+        var map = new HashMap<Point, Integer>();
+        for (Point point : points) {
+            map.merge(point, 1, Integer::sum);
+        }
+        return map;
     }
 
 
@@ -37,6 +40,39 @@ public class HSE_5_5_ListToMap {
             this.x = x;
             this.y = y;
             this.z = z;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            Point point = (Point) o;
+            return x == point.x &&
+                    y == point.y &&
+                    z == point.z;
+        }
+
+        @Override
+        public int hashCode() {
+            Object[] a = new Object[]{x, y, z};
+            if (a == null)
+                return 0;
+
+            int result = 1;
+
+            for (Object element : a)
+                result = 31 * result + (element == null ? 0 : element.hashCode());
+
+            return result;
+        }
+
+        @Override
+        public String toString() {
+            return "Point{" +
+                    "x=" + x +
+                    ", y=" + y +
+                    ", z=" + z +
+                    '}';
         }
     }
 

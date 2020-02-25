@@ -2,29 +2,41 @@ package ru.hse.s6;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.nio.file.Files;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class HSE_6_1_ParseFile {
 
 /*
-2345
-123213
-312331231
-1323123123123
-dsadkjsadasldksjd
-1jkhdjkad
+2011-12-03T10:15:30Z
+2011-12-03T10:15:30Z
+2011-12-03T10:15:30Z
 *  */
 
 
     public static void main(String[] args) throws IOException {
         File myStrings = new File("myStrings");
-        int stringCount = countStringWithLengthMoreThan5(myStrings);
-        System.out.println(stringCount);
+        Duration diffDuration = getDurationBetweenMinAndMax(myStrings);
+        System.out.println(diffDuration);
     }
 
-    private static int countStringWithLengthMoreThan5(File myStrings) {
+    private static Duration getDurationBetweenMinAndMax(File myStrings) throws IOException {
         // use try with resources
+        try (Stream<String> lineStream = Files.lines(myStrings.toPath())) {
+
+            final List<Instant> instants = lineStream.map(line -> getInstantFromString(line))
+                    .collect(Collectors.toList());
+        }
     }
+
+    private static Instant getInstantFromString(String string) {
+        // todo
+        return null;
+    }
+
 
 }

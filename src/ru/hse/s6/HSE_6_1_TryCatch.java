@@ -29,6 +29,8 @@ public class HSE_6_1_TryCatch {
         }
     }
 
+
+
     private static final class MyNonCheckedException extends RuntimeException {
 
         public MyNonCheckedException(Throwable cause) {

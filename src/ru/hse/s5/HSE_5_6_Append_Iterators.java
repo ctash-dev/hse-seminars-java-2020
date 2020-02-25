@@ -34,11 +34,13 @@ public class HSE_5_6_Append_Iterators {
         @Override
         public boolean hasNext() {
             //todo
+            return false;
         }
 
         @Override
         public T next() {
             //todo
+            return null;
         }
     }
 

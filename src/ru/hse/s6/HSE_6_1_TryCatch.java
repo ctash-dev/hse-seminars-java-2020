@@ -24,11 +24,15 @@ public class HSE_6_1_TryCatch {
         try {
             throwChecked();
         } catch (IOException e) {
-            // rethrow as MyNonCheckedException
+            throw new MyNonCheckedException(e);
         }
     }
 
-    private static final class MyNonCheckedException extends Exception {}
+    private static final class MyNonCheckedException extends RuntimeException {
+        public MyNonCheckedException(Throwable cause) {
+            super(cause);
+        }
+    }
 
     private static void throwChecked() throws IOException {
 

@@ -24,7 +24,7 @@ public class HSE_6_1_TryCatch {
         try {
             throwChecked();
             throwUnchecked();
-        } catch (IOException e) {
+        } catch (Exception e) {
             throw new MyNonCheckedException(e);
         }
     }

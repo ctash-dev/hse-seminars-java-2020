@@ -1,21 +1,18 @@
 package ru.hse.s8;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 public class VisibilityOfRead {
 
     public static void main(String[] args) throws InterruptedException {
-        IntHolder intHolder = new IntHolder();
+        AtomicInteger counter = new AtomicInteger(0);
         for (int i = 0; i < 100; i++) {
             Thread thread = new Thread(() -> {
-                System.out.println("See counter as " + intHolder.counter);
-                intHolder.counter++;
+                System.out.println("See counter as " + counter.get());
+                counter.incrementAndGet();
             }, "hseThread" + i);
             thread.start();
-            thread.join();
         }
-    }
-
-    static class IntHolder {
-        int counter = 0;
     }
 
 }

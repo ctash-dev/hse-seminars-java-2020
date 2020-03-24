@@ -20,12 +20,11 @@ public class Concurrency4SingletonFactory {
         private Singleton instance;
 
         public Singleton get() {
-            if (instance == null) { //read1
-                synchronized (this) {
-                    instance = new Singleton(); //read2
-                }
-            }
-            return instance; //read3
+            return Holder.INSTANCE;
+        }
+
+        private static class Holder {
+            public static final Singleton INSTANCE = new Singleton();
         }
     }
 

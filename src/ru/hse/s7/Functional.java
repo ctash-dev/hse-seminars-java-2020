@@ -43,10 +43,10 @@ public class Functional {
                 return " ".repeat(width);
             }
         };
-        BiFunction<Integer, Integer, String> circleWidth1 = (a, b) -> circleFunction.makeCell(a, b, 1);
+        BiFunction<Integer, Integer, String> circleWidth1 = (a, b) -> circleFunction.makeCell(a, b, 2);
         BiFunction<Integer, Integer, String> function = circleWidth1;
-        final int DIMENSION = 10;
-        final int WIDTH = 1;
+        final int DIMENSION = 20;
+        final int WIDTH = 2;
         System.out.print(" ".repeat(WIDTH) + "|");
         for (int column = 1; column < DIMENSION; column++) {
             System.out.printf("%" + WIDTH + "d|", column);

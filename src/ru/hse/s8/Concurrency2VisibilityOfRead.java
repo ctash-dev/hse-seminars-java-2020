@@ -2,7 +2,7 @@ package ru.hse.s8;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class VisibilityOfRead {
+public class Concurrency2VisibilityOfRead {
 
     public static void main(String[] args) throws InterruptedException {
         AtomicInteger counter = new AtomicInteger(0);

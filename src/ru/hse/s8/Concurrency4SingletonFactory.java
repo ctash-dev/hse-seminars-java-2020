@@ -19,13 +19,13 @@ public class Concurrency4SingletonFactory {
     static class SingletonFactory {
         private Singleton instance;
 
-        public synchronized Singleton get() {
-            if (instance == null) {
-                instance = new Singleton();
-                return instance;
-            } else {
-                return instance;
+        public Singleton get() {
+            if (instance == null) { //read1
+                synchronized (this) {
+                    instance = new Singleton(); //read2
+                }
             }
+            return instance; //read3
         }
     }
 

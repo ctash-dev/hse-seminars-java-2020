@@ -17,15 +17,19 @@ public class Concurrency4SingletonFactory {
     }
 
     static class SingletonFactory {
-        private Singleton instance;
+        private volatile Singleton instance;
 
         public Singleton get() {
-            return Holder.INSTANCE;
+            if (instance == null) { //read1
+                synchronized (this) {
+                    if (instance == null) {
+                        instance = new Singleton(); //read2
+                    }
+                }
+            }
+            return instance; //read3
         }
 
-        private static class Holder {
-            public static final Singleton INSTANCE = new Singleton();
-        }
     }
 
     static class Singleton {

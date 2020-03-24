@@ -1,25 +1,34 @@
 package ru.hse.s8;
 
+import java.util.UUID;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
+import java.util.concurrent.ThreadFactory;
 
 public class TaskBasedConcurrency {
 
     public static void main(String[] args) throws InterruptedException, ExecutionException {
-        ExecutorService executorService = Executors.newFixedThreadPool(100);
+        ExecutorService executorService = Executors.newFixedThreadPool(2, new ThreadFactory() {
+            @Override
+            public Thread newThread(Runnable r) {
+                Thread thread = new Thread(r, "hseDaemon-" + UUID.randomUUID());
+                thread.setDaemon(true);
+                return thread;
+            }
+        });
         // Runable
         Future<?> future = executorService.submit(TaskBasedConcurrency::printCurrentThread);
         // wait for execution.
         future.get();
-        executorService.submit(TaskBasedConcurrency::printCurrentThread);
-        executorService.submit(TaskBasedConcurrency::printCurrentThread);
-        executorService.submit(TaskBasedConcurrency::printCurrentThread);
+        for (int i = 0; i < 100; i++) {
+            executorService.submit(TaskBasedConcurrency::printCurrentThread);
+        }
     }
 
     private static void printCurrentThread() {
-        System.out.println(Thread.currentThread());
+        System.out.println(Thread.currentThread().getName());
     }
 
 }
